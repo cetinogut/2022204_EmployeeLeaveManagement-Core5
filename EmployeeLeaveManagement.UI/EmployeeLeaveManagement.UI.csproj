@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeLeaveManagement.Common\EmployeeLeaveManagement.Common.csproj" />
     <ProjectReference Include="..\EmployeeLeaveManagement.Data\EmployeeLeaveManagement.Data.csproj" />
   </ItemGroup>
 

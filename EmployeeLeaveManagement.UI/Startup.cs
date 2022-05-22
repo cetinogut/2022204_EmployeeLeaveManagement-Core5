@@ -1,4 +1,7 @@
+using EmployeeLeaveManagement.Common.Mappings;
+using EmployeeLeaveManagement.Data.Contracts;
 using EmployeeLeaveManagement.Data.DataContext;
+using EmployeeLeaveManagement.Data.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +37,11 @@ namespace _2022204_EmployeeLeaveManagement_Core5
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
+            services.AddAutoMapper(typeof(Maps));
+            services.AddScoped<IEmployeeLeaveAllocationRepository, EmployeeLeaveAllocationRepository>();
+            services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
+            services.AddScoped<IEmployeeLeaveRequestRepository, EmployeeLeaveRequestRepository>();
+
             services.AddControllersWithViews();
         }
 
