@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveManagement.UI", "2022204_EmployeeLeaveManagement-Core5\EmployeeLeaveManagement.UI.csproj", "{0968FEB6-4075-4378-9330-D3DCB6103EB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveManagement.Data", "EmployeeLeaveManagement.Data\EmployeeLeaveManagement.Data.csproj", "{A642CCFE-AF9F-493F-886D-CEE62687CF71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveManagement.BusinessEngine", "EmployeeLeaveManagement.BusinessEngine\EmployeeLeaveManagement.BusinessEngine.csproj", "{6890EA4F-579F-4B66-BD4F-E446BE63A061}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveManagement.Common", "EmployeeLeaveManagement.Common\EmployeeLeaveManagement.Common.csproj", "{CE7965F6-A9F3-42D7-A9CA-89A289723FD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0968FEB6-4075-4378-9330-D3DCB6103EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0968FEB6-4075-4378-9330-D3DCB6103EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0968FEB6-4075-4378-9330-D3DCB6103EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0968FEB6-4075-4378-9330-D3DCB6103EB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A642CCFE-AF9F-493F-886D-CEE62687CF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A642CCFE-AF9F-493F-886D-CEE62687CF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A642CCFE-AF9F-493F-886D-CEE62687CF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A642CCFE-AF9F-493F-886D-CEE62687CF71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6890EA4F-579F-4B66-BD4F-E446BE63A061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6890EA4F-579F-4B66-BD4F-E446BE63A061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6890EA4F-579F-4B66-BD4F-E446BE63A061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6890EA4F-579F-4B66-BD4F-E446BE63A061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7965F6-A9F3-42D7-A9CA-89A289723FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7965F6-A9F3-42D7-A9CA-89A289723FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7965F6-A9F3-42D7-A9CA-89A289723FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7965F6-A9F3-42D7-A9CA-89A289723FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3E2989C-8436-4291-AD32-E9671DA8E97E}
+	EndGlobalSection
+EndGlobal
