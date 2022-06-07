@@ -4,7 +4,7 @@ using EmployeeLeaveManagement.Data.DataContext;
 
 namespace EmployeeLeaveManagement.Data.Implementation
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork  // database rollbacks are done via this class
     {
         private readonly EmployeeLeaveManagementContext _context;
         public UnitOfWork(EmployeeLeaveManagementContext context)

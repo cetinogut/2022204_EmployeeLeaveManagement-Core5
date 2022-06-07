@@ -8,6 +8,9 @@ namespace EmployeeLeaveManagement.Data.Contracts
 {
     public  interface IUnitOfWork : IDisposable
     {
+        IEmployeeLeaveAllocationRepository employeeLeaveAllocation { get; }
+        IEmployeeLeaveRequestRepository employeeLeaveRequest { get;  }
+        IEmployeeLeaveTypeRepository employeeLeaveType { get; }
         void Save();
     }
 }

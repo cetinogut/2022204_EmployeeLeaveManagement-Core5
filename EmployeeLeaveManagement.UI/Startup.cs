@@ -1,3 +1,5 @@
+using EmployeeLeaveManagement.BusinessEngine.Contracts;
+using EmployeeLeaveManagement.BusinessEngine.Implementation;
 using EmployeeLeaveManagement.Common.Mappings;
 using EmployeeLeaveManagement.Data.Contracts;
 using EmployeeLeaveManagement.Data.DataContext;
@@ -38,9 +40,10 @@ namespace _2022204_EmployeeLeaveManagement_Core5
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
             services.AddAutoMapper(typeof(Maps));
-            services.AddScoped<IEmployeeLeaveAllocationRepository, EmployeeLeaveAllocationRepository>();
-            services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
-            services.AddScoped<IEmployeeLeaveRequestRepository, EmployeeLeaveRequestRepository>();
+            //services.AddScoped<IEmployeeLeaveAllocationRepository, EmployeeLeaveAllocationRepository>();
+            //services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
+            //services.AddScoped<IEmployeeLeaveRequestRepository, EmployeeLeaveRequestRepository>();
+            services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>(); // implemented unitofwork here and commented the repos above
 
             services.AddControllersWithViews();
         }

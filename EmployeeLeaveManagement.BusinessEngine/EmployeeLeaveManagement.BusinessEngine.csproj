@@ -8,4 +8,8 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeLeaveManagement.Data\EmployeeLeaveManagement.Data.csproj" />
+  </ItemGroup>
+
 </Project>
