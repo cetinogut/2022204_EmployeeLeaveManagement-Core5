@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeLeaveManagement.Common.ViewModels
 {
-    public class EmployeeVM
+    public class EmployeeVM // this does not inherti from baseVM because the id in .net table is string
     {
         public string  Id { get; set; }
 

@@ -10,14 +10,14 @@ namespace EmployeeLeaveManagement.Data.Implementation
         public UnitOfWork(EmployeeLeaveManagementContext context)
         {
             _context = context;
-            employeeLeaveAllocation = new EmployeeLeaveAllocationRepository(_context);
-            employeeLeaveRequest = new EmployeeLeaveRequestRepository(_context);
-            employeeLeaveType = new EmployeeLeaveTypeRepository(_context);
+            employeeLeaveAllocationRepository = new EmployeeLeaveAllocationRepository(_context); // for private sets
+            employeeLeaveRequestRepository = new EmployeeLeaveRequestRepository(_context);
+            employeeLeaveTypeRepository = new EmployeeLeaveTypeRepository(_context);
         }
          
-        public IEmployeeLeaveAllocationRepository employeeLeaveAllocation { get; private set; }
-        public IEmployeeLeaveRequestRepository employeeLeaveRequest { get; private set; }
-        public IEmployeeLeaveTypeRepository employeeLeaveType { get; private set; }
+        public IEmployeeLeaveAllocationRepository employeeLeaveAllocationRepository { get; private set; } // we dont want these values to be set fro moutside the class thats why we made them private set.
+        public IEmployeeLeaveRequestRepository employeeLeaveRequestRepository { get; private set; }
+        public IEmployeeLeaveTypeRepository employeeLeaveTypeRepository { get; private set; }
 
         public void Dispose()
         {

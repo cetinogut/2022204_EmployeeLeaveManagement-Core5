@@ -1,4 +1,4 @@
-using EmployeeLeaveManagement.BusinessEngine.Contracts;
+﻿using EmployeeLeaveManagement.BusinessEngine.Contracts;
 using EmployeeLeaveManagement.BusinessEngine.Implementation;
 using EmployeeLeaveManagement.Common.Mappings;
 using EmployeeLeaveManagement.Data.Contracts;
@@ -44,8 +44,9 @@ namespace _2022204_EmployeeLeaveManagement_Core5
             //services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
             //services.AddScoped<IEmployeeLeaveRequestRepository, EmployeeLeaveRequestRepository>();
             services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>(); // implemented unitofwork here and commented the repos above
-
-            services.AddControllersWithViews();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddRazorPages(); // bunu eklemeye gerek var mıydı???
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
