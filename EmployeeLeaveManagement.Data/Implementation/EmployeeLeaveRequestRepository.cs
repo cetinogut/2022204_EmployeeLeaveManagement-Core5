@@ -7,7 +7,8 @@ namespace EmployeeLeaveManagement.Data.Implementation
     public class EmployeeLeaveRequestRepository : Repository<EmployeeLeaveRequest>, IEmployeeLeaveRequestRepository
     {
         private readonly EmployeeLeaveManagementContext _context;
-        public EmployeeLeaveRequestRepository(EmployeeLeaveManagementContext context) : base(context)
+        public EmployeeLeaveRequestRepository(EmployeeLeaveManagementContext context) 
+            : base(context)
         {
             _context = context;
         }

@@ -8,7 +8,8 @@ namespace EmployeeLeaveManagement.Data.Implementation
    public  class EmployeeLeaveTypeRepository : Repository <EmployeeLeaveType>, IEmployeeLeaveTypeRepository
     {
         private readonly EmployeeLeaveManagementContext _context;
-        public EmployeeLeaveTypeRepository(EmployeeLeaveManagementContext context) : base (context)
+        public EmployeeLeaveTypeRepository(EmployeeLeaveManagementContext context) 
+            : base (context)
         {
             _context = context;
         }

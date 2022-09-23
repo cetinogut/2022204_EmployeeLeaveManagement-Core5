@@ -31,5 +31,10 @@ namespace _2022204_EmployeeLeaveManagement_Core5.Controllers
 
             return View();
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

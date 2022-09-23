@@ -9,7 +9,8 @@ namespace EmployeeLeaveManagement.Data.Implementation
     {
         private readonly EmployeeLeaveManagementContext _context;
 
-        public EmployeeLeaveAllocationRepository(EmployeeLeaveManagementContext context) : base (context)
+        public EmployeeLeaveAllocationRepository(EmployeeLeaveManagementContext context) 
+            : base (context)
         {
             _context = context;
 

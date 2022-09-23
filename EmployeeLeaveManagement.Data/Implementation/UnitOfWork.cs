@@ -10,12 +10,13 @@ namespace EmployeeLeaveManagement.Data.Implementation
         public UnitOfWork(EmployeeLeaveManagementContext context)
         {
             _context = context;
-            employeeLeaveAllocationRepository = new EmployeeLeaveAllocationRepository(_context); // for private sets
+            employeeLeaveAllocationRepository = new EmployeeLeaveAllocationRepository(_context); // for private sets //bu inject işlemi için gerekli
             employeeLeaveRequestRepository = new EmployeeLeaveRequestRepository(_context);
             employeeLeaveTypeRepository = new EmployeeLeaveTypeRepository(_context);
         }
          
-        public IEmployeeLeaveAllocationRepository employeeLeaveAllocationRepository { get; private set; } // we dont want these values to be set fro moutside the class thats why we made them private set.
+        //bunları UofW vasıtasıyla çağıracağımız için repositoryleri burada tanımlıyoruz.
+        public IEmployeeLeaveAllocationRepository employeeLeaveAllocationRepository { get; private set; } // we dont want these values to be set from outside the class thats why we made them private set.
         public IEmployeeLeaveRequestRepository employeeLeaveRequestRepository { get; private set; }
         public IEmployeeLeaveTypeRepository employeeLeaveTypeRepository { get; private set; }
 

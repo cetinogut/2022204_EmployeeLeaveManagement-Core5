@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeLeaveManagement.Data.Contracts
 {
-    public  interface IUnitOfWork : IDisposable
+    public  interface IUnitOfWork : IDisposable //işlem bitince garbage coleector ile kaybet.
     {
         IEmployeeLeaveAllocationRepository employeeLeaveAllocationRepository { get; }
         IEmployeeLeaveRequestRepository employeeLeaveRequestRepository { get;  }
