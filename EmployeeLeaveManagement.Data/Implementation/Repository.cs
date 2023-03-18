@@ -28,12 +28,17 @@ namespace EmployeeLeaveManagement.Data.Implementation
             dbSet.Add(entity);
         }
 
+        /// <summary>
+        /// Get Entity T by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public T Get(int id)
         {
             return dbSet.Find(id);
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)//IEnumerable da olabilirde Taste projesinde öyle
         {
             IQueryable<T> query = dbSet;
             if (filter != null)
@@ -41,6 +46,7 @@ namespace EmployeeLeaveManagement.Data.Implementation
                 query = query.Where(filter);
             }
 
+            //include properties will be comma seperated
             if (includeProperties != null)
             {
                 foreach (var item in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
@@ -75,9 +81,20 @@ namespace EmployeeLeaveManagement.Data.Implementation
             return query.FirstOrDefault();
         }
 
+        public void Remove(int id)
+        {
+            T entityToRemove = dbSet.Find(id);
+            Remove(entityToRemove);
+        }
+
         public void Remove(T entity)
         {
             dbSet.Remove(entity);
+        }
+
+        public void RemoveRange(IEnumerable<T> entity)
+        {
+            dbSet.RemoveRange(entity);
         }
 
         public void Update(T entity)

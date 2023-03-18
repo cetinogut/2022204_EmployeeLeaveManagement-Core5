@@ -15,7 +15,9 @@ namespace EmployeeLeaveManagement.Data.Contracts
         T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null);
 
         void Add(T entity);
+        void Remove(int id);
         void Remove(T entity);
+        void RemoveRange(IEnumerable<T> entity);
         void Update(T entity);
 
     }
