@@ -20,6 +20,7 @@ namespace EmployeeLeaveManagement.Data.DbModels
         public Employee Employee { get; set; }
 
         public int EmployeeLeaveTypeId { get; set; }
+        
         [ForeignKey("EmployeeLeaveTypeId")]
         public EmployeeLeaveType EmployeeLeaveType { get; set; }
     }

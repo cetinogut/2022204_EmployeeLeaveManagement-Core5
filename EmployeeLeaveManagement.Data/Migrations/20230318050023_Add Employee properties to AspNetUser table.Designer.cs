@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeLeaveManagement.Data.Migrations
 {
     [DbContext(typeof(EmployeeLeaveManagementContext))]
-    [Migration("20220521222737_AddNewEmployeeProperties")]
-    partial class AddNewEmployeeProperties
+    [Migration("20230318050023_Add Employee properties to AspNetUser table")]
+    partial class AddEmployeepropertiestoAspNetUsertable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,103 @@ namespace EmployeeLeaveManagement.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveAllocation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("EmployeeLeaveTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("EmployeeLeaveTypeId");
+
+                    b.ToTable("EmployeeLeaveAllocations");
+                });
+
+            modelBuilder.Entity("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool?>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ApprovingEmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Cancelled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DateRequested")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EmployeeLeaveTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RequestComments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestingEmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApprovingEmployeeId");
+
+                    b.HasIndex("EmployeeLeaveTypeId");
+
+                    b.HasIndex("RequestingEmployeeId");
+
+                    b.ToTable("EmployeeLeaveRequests");
+                });
+
+            modelBuilder.Entity("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DefaultDays")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeLeaveTypes");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -240,6 +337,46 @@ namespace EmployeeLeaveManagement.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Employee");
+                });
+
+            modelBuilder.Entity("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveAllocation", b =>
+                {
+                    b.HasOne("EmployeeLeaveManagement.Data.DbModels.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveType", "EmployeeLeaveType")
+                        .WithMany()
+                        .HasForeignKey("EmployeeLeaveTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("EmployeeLeaveType");
+                });
+
+            modelBuilder.Entity("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveRequest", b =>
+                {
+                    b.HasOne("EmployeeLeaveManagement.Data.DbModels.Employee", "ApprovingEmployee")
+                        .WithMany()
+                        .HasForeignKey("ApprovingEmployeeId");
+
+                    b.HasOne("EmployeeLeaveManagement.Data.DbModels.EmployeeLeaveType", "EmployeeLeaveType")
+                        .WithMany()
+                        .HasForeignKey("EmployeeLeaveTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EmployeeLeaveManagement.Data.DbModels.Employee", "RequestingEmployee")
+                        .WithMany()
+                        .HasForeignKey("RequestingEmployeeId");
+
+                    b.Navigation("ApprovingEmployee");
+
+                    b.Navigation("EmployeeLeaveType");
+
+                    b.Navigation("RequestingEmployee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -9,7 +9,7 @@ namespace EmployeeLeaveManagement.Data.Contracts
 {
     public interface IRepositoryBase<T> where T : class, new() //no abstract classess or interfaces here
     {
-        IQueryable<T> GetAll(Expression<Func<T, bool>> filter= null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string icludeProperties = null );
+        IQueryable<T> GetAll(Expression<Func<T, bool>> filter= null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null );
 
         T Get(int id);
         T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null);

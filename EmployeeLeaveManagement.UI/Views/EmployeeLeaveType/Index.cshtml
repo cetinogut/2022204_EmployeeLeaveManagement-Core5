@@ -2,26 +2,26 @@
 @model IEnumerable<EmployeeLeaveTypeVM>
 
     @{
-        ViewData["Title"] = "İzin Tipleri";
+        ViewData["Title"] = "Leave Types";
     }
 
     <div class="text-center">
-        <h1 class="display-4">Çalışan İzin Takip Listesi</h1>
+        <h1 class="display-4">Team Leave Roaster</h1>
 
     </div>
     <div class="page-header">
         <h1>
-            Yönetim
+            Admin
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                Çalışan İzin Takip Listesi
+                Team Leave Roaster
             </small>
         </h1>
     </div><!-- /.page-header -->
 
     
     <div class="col-6 text-left text-white">
-        <a class="btn btn-success btn-next" asp-controller="EmployeeLeaveType" asp-action="Create" style="margin-bottom:5px;">İzin Tipi Ekle</a>        
+        <a class="btn btn-success btn-next" asp-controller="EmployeeLeaveType" asp-action="Create" style="margin-bottom:5px;">New Leave Type</a>        
     </div>
 
     <div class="row">
@@ -39,8 +39,8 @@
                                     </label>
                                 </th>
                                 <th class="detail-col">Details</th>
-                                <th>Liste İsmi</th>
-                                <th>Tarih</th>
+                                <th>Name</th>
+                                <th>Date</th>
                                 <th class="hidden-480">Clicks</th>
 
                                 <th>
@@ -49,7 +49,7 @@
                                 </th>
                                 <th class="hidden-480">Status</th>
 
-                                <th>İşlemler</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
 
