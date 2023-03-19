@@ -5,7 +5,7 @@ namespace EmployeeLeaveManagement.Common.ViewModels
 {
    public class EmployeeLeaveAllocationVM : BaseVM
     {
-         public int NumberOfDays { get; set; }
+        public int NumberOfDays { get; set; }
         public DateTime DateCreated { get; set; }
         public int Period { get; set; }
 

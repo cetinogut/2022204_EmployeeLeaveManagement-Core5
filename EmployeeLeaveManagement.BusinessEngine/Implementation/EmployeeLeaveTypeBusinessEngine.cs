@@ -5,6 +5,7 @@ using EmployeeLeaveManagement.Common.ResultModels;
 using EmployeeLeaveManagement.Common.ViewModels;
 using EmployeeLeaveManagement.Data.Contracts;
 using EmployeeLeaveManagement.Data.DbModels;
+using EmployeeLeaveManagement.Data.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,14 @@ namespace EmployeeLeaveManagement.BusinessEngine.Implementation
             _mapper = mapper;
 
         }
+
+        
         #endregion
 
         #region Custom Methods
         public Result<List<EmployeeLeaveTypeVM>> GetAllEmployeeLeaveTypes()
         {
-            var data = _unitOfwork.employeeLeaveTypeRepository.GetAll().ToList();
+            var data = _unitOfwork.employeeLeaveTypeRepository.GetAll( ).ToList();
 
             // following code block is an example of  returning the view without using the view model.
             #region method1
@@ -69,6 +72,82 @@ namespace EmployeeLeaveManagement.BusinessEngine.Implementation
 
         }
 
+        
+        public Result<EmployeeLeaveTypeVM> CreateEmployeeLeaveType(EmployeeLeaveTypeVM model)
+        {
+            if (model != null)
+            {
+                try
+                {
+                    var leaveType = _mapper.Map<EmployeeLeaveTypeVM, EmployeeLeaveType>(model);
+                    leaveType.DateCreated = DateTime.Now;
+                    leaveType.DateUpdated = DateTime.Now;
+                    leaveType.IsActive = true;
+                    _unitOfwork.employeeLeaveTypeRepository.Add(leaveType);
+                    _unitOfwork.Save();
+                    return new Result<EmployeeLeaveTypeVM>(true, ResultMessages.RecordCreatedWithSuccess);
+                }
+                catch (Exception ex)
+                {
+
+                    return new Result<EmployeeLeaveTypeVM>(false, ResultMessages.RecordCreationFailure + " - " + ex.Message.ToString());
+                }
+            }
+            else
+                return new Result<EmployeeLeaveTypeVM>(false, ResultMessages.RecordCreationFailure);
+        }
+
+        public Result<EmployeeLeaveTypeVM> EditEmployeeLeaveType(EmployeeLeaveTypeVM model)
+        {
+            if (model != null)
+            {
+                try
+                {
+                    var leaveType = _mapper.Map<EmployeeLeaveTypeVM, EmployeeLeaveType>(model);
+                    leaveType.DateUpdated = DateTime.Now;
+                    _unitOfwork.employeeLeaveTypeRepository.Update(leaveType);
+                    _unitOfwork.Save();
+                    return new Result<EmployeeLeaveTypeVM>(true, ResultMessages.RecordCreatedWithSuccess);
+                }
+                catch (Exception ex)
+                {
+
+                    return new Result<EmployeeLeaveTypeVM>(false, ResultMessages.RecordCreationFailure + " - " + ex.Message.ToString());
+                }
+            }
+            else
+                return new Result<EmployeeLeaveTypeVM>(false, ResultMessages.RecordCreationFailure);
+        }
+
+        public Result<EmployeeLeaveTypeVM> GetEmployeeLeaveType(int id)
+        {
+           var data = _unitOfwork.employeeLeaveTypeRepository.Get(id);
+            if (data != null)
+            {
+                var leaveType = _mapper.Map<EmployeeLeaveType, EmployeeLeaveTypeVM>(data);
+                return new Result<EmployeeLeaveTypeVM>(true, ResultMessages.RecordFound, leaveType);
+            }
+            else
+            {
+                return new Result<EmployeeLeaveTypeVM>(false, ResultMessages.RecordNotFound);
+            }
+        }
+
+        public Result<EmployeeLeaveTypeVM> RemoveEmployeeLeaveType(int id)
+        {
+            var data = _unitOfwork.employeeLeaveTypeRepository.Get(id);
+            if (data != null)
+            {
+                data.IsActive = false;
+                data.DateUpdated = DateTime.Now;
+               // _unitOfwork.employeeLeaveTypeRepository.Remove(data); // no data deletion, just update the IsActive property
+                _unitOfwork.employeeLeaveTypeRepository.Update(data);
+                _unitOfwork.Save();
+                return new Result<EmployeeLeaveTypeVM>(true, ResultMessages.RecordDeletedWithSuccess);
+            }
+            else
+                return new Result<EmployeeLeaveTypeVM>(false, ResultMessages.RecordDeletionFailure);
+        }
         #endregion
 
 

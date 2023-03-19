@@ -3,6 +3,7 @@ using EmployeeLeaveManagement.BusinessEngine.Implementation;
 using EmployeeLeaveManagement.Common.Mappings;
 using EmployeeLeaveManagement.Data.Contracts;
 using EmployeeLeaveManagement.Data.DataContext;
+using EmployeeLeaveManagement.Data.DbModels;
 using EmployeeLeaveManagement.Data.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,9 @@ namespace _2022204_EmployeeLeaveManagement_Core5
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages(); // bunu eklemeye gerek var mıydı???
+
+            services.AddIdentity<Employee, IdentityRole>().AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

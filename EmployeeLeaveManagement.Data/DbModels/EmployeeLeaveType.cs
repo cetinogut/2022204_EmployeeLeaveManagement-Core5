@@ -11,6 +11,9 @@ namespace EmployeeLeaveManagement.Data.DbModels
         public string Name { get; set; }
         public int DefaultDays { get; set; }
         public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
+
+        public bool IsActive { get; set; }
 
     }
 }

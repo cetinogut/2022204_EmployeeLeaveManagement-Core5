@@ -4,14 +4,16 @@ using EmployeeLeaveManagement.Data.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeLeaveManagement.Data.Migrations
 {
     [DbContext(typeof(EmployeeLeaveManagementContext))]
-    partial class EmployeeLeaveManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20230319054844_Add DateUpdated to LeaveType")]
+    partial class AddDateUpdatedtoLeaveType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,9 +112,6 @@ namespace EmployeeLeaveManagement.Data.Migrations
 
                     b.Property<int>("DefaultDays")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

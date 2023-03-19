@@ -1,162 +1,262 @@
-﻿
-@model IEnumerable<EmployeeLeaveTypeVM>
+﻿@model IEnumerable<EmployeeLeaveTypeVM>
 
-    @{
-        ViewData["Title"] = "Leave Types";
-    }
+@{
+    ViewData["Title"] = "Employee Leave Types";
+}
 
-    <div class="text-center">
+@* <div class="text-center">
         <h1 class="display-4">Team Leave Roaster</h1>
 
-    </div>
-    <div class="page-header">
-        <h1>
-            Admin
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                Team Leave Roaster
-            </small>
-        </h1>
-    </div><!-- /.page-header -->
+    </div>*@
+<div class="page-header">
+    <h1>
+        @*Admin*@
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            Leave Types List
+        </small>
+    </h1>
+</div><!-- /.page-header -->
 
-    
-    <div class="col-6 text-left text-white">
-        <a class="btn btn-success btn-next" asp-controller="EmployeeLeaveType" asp-action="Create" style="margin-bottom:5px;">New Leave Type</a>        
-    </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <div class="row">
-                <div class="col-xs-12">
-                    <table id="simple-table" class="table  table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th class="center">
-                                    <label class="pos-rel">
-                                        <input type="checkbox" class="ace" />
-                                        <span class="lbl"></span>
-                                    </label>
-                                </th>
-                                <th class="detail-col">Details</th>
-                                <th>Name</th>
-                                <th>Date</th>
-                                <th class="hidden-480">Clicks</th>
+<div class="col-6 text-left text-white">
+    <a class="btn btn-success btn-next" asp-controller="EmployeeLeaveType" asp-action="Create" style="margin-bottom:5px;">New Leave Type</a>
+</div>
 
-                                <th>
-                                    <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                                    Update
-                                </th>
-                                <th class="hidden-480">Status</th>
 
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
+<!-- PAGE CONTENT BEGINS -->
+<div class="row">
+    <div class="col-xs-12">
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Default Days</th>
+                    <th>
+                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                        Date Created
+                    </th>
+                    <th>
+                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                        Date Updated
+                    </th>
+                    <th>Is Active?</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-                        <tbody>
-                            <tr>
-                                @foreach(var item in Model)
-                                {
+            <tbody>
 
-                                <td class="center">
-                                    <label class="pos-rel">
-                                        <input type="checkbox" class="ace" />
-                                        <span class="lbl"></span>
-                                    </label>
-                                </td>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="#">@item.Name</a>
+                        </td>
 
-                                <td class="center">
-                                    <div class="action-buttons">
-                                        <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                                            <i class="ace-icon fa fa-angle-double-down"></i>
-                                            <span class="sr-only">Details</span>
-                                        </a>
-                                    </div>
-                                </td>
+                        <td>
+                            <a href="#">@item.DefaultDays</a>
+                        </td>
 
-                                <td>
-                                    <a href="#">@item.Name</a>
-                                </td>
-                                <td>@item.DateCreated</td>
-                                <td class="hidden-480">3,330</td>
-                                <td>Feb 12</td>
+                        <td>@item.DateCreated</td>
 
-                                <td class="hidden-480">
-                                    <span class="label label-sm label-warning">Expiring</span>
-                                </td>
+                        <td>@item.DateUpdated</td>
 
-                                <td>
-                                    <div class="hidden-sm hidden-xs btn-group">
-                                        <button class="btn btn-xs btn-success">
-                                            <i class="ace-icon fa fa-check bigger-120"></i>
-                                        </button>
+                        <td>@item.IsActive</td>
 
-                                        <button class="btn btn-xs btn-info">
-                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                        </button>
+                        <td>
+                            <div class="hidden-sm hidden-xs btn-group">
+                                <button class="btn btn-xs btn-success">
+                                    <i class="ace-icon fa fa-check bigger-120"></i>
+                                </button>
 
-                                        <button class="btn btn-xs btn-danger">
-                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                        </button>
+                                @* <form asp-controller="EmployeeLeaveType" asp-action="Edit" asp-route-id="@item.Id">
+                                <button class="btn btn-xs btn-info" type="submit">
+                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </button>
+                                </form>*@
 
-                                        <button class="btn btn-xs btn-warning">
-                                            <i class="ace-icon fa fa-flag bigger-120"></i>
-                                        </button>
-                                    </div>
+                                @* <a class="btn btn-xs btn-info" asp-controller="EmployeeLeaveType" asp-action="Edit">Edit</a> *@
 
-                                    <div class="hidden-md hidden-lg">
-                                        <div class="inline pos-rel">
-                                            <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                                            </button>
+                                <a class="btn btn-xs btn-info" asp-controller="EmployeeLeaveType" asp-action="Edit" asp-route-id="@item.Id">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
 
-                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                <li>
-                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                        <span class="blue">
-                                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                        </span>
-                                                    </a>
-                                                </li>
+                                @*  <button class="btn btn-xs btn-danger" id="btnRemove" data-id = "@item.Id">
+                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </button>
+                                *@
+                                <a class="btn btn-xs btn-danger" id="btnRemove"  onclick=Delete('/EmployeeLeaveType/Delete/'+@item.Id) data-id="@item.Id">
+                                    <i class="ace-icon fa fa-trash bigger-120"></i>
+                                </a>
 
-                                                <li>
-                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                        <span class="green">
-                                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                        </span>
-                                                    </a>
-                                                </li>
+                              
 
-                                                <li>
-                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                        <span class="red">
-                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
+                                <button class="btn btn-xs btn-warning">
+                                    <i class="ace-icon fa fa-flag bigger-120"></i>
+                                </button>
+                            </div>
+
+                            <div class="hidden-md hidden-lg">
+                                <div class="inline pos-rel">
+                                    <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                        <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                    </button>
+
+                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                        <li>
+                                            <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                <span class="blue">
+                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                <span class="green">
+                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                <span class="red">
+                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div><!-- /.row -->
+
+<div class="hr hr-18 dotted hr-double"></div>
+
+
+
+<div class="hr hr-18 dotted hr-double"></div>
+
+
+
+
+<!-- PAGE CONTENT ENDS -->
+@section Scripts{
+    <script>
+        function Delete(url) {
+            console.log("In REady : ");
+            swal({
+                title: "Are you sure you want to Delete?",
+                text: "You will not be able to restore the data!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: url,
+                        success: function (data) {
+                            if (data.success) {
+                                toastr.success(data.message);
+                            }
+                            else {
+                                toastr.error(data.message);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+      
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+            console.log("In REady : ");
+            $("#btnRemove").on("click", function () {
+                console.log("In on click : ");
+                var id = $("#btnRemove").data("id");
+                swal({
+                    title: 'Silmek İstediğinize Emin Misiniz? ' + id ,
+                    text: 'Silinen Data Geri Alınamaz!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: "/EmployeeLeaveType/Delete/" + id,
+                            success: function (data) {
+                                if (data.success) {
+                                    toastr.success(data.message);
+                                    location.reload();
+                                } else {
+                                    toastr.error(data.message);
                                 }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>*@
+    
+  @*   <script type="text/javascript">
+        $(document).ready( function(){
+            console.log("In READY : ");
+            $("#btnRemove").on("click", function () {
 
-                            </tr>
+                console.log("In deleted : ");
+
+                //var id = parseInt((this).attr("data-id"));
+                var id = $("#btnRemove").data("id");
+                console.log("To be deleted : ", id);
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: "/EmployeeLeaveType/Delete/" + id,
+                            success: function (data) {
+                                if (data.success) {
+                                    toastr.success(data.message);
+                                    location.reload();
+                                } else {
+                                    toastr.error(data.message);
+                                }
+                            }
+                        });
+                        //Swal.fire(
+                        //    'Deleted!',
+                        //    'Your file has been deleted.',
+                        //    'success'
+                        //)
+                    }
+                })
+            });
 
 
-                        </tbody>
-                    </table>
-                </div><!-- /.span -->
-            </div><!-- /.row -->
-
-            <div class="hr hr-18 dotted hr-double"></div>
-
-
-
-            <div class="hr hr-18 dotted hr-double"></div>
-
-
-
-
-            <!-- PAGE CONTENT ENDS -->
-        </div><!-- /.col -->
-    </div><!-- /.row -->
+        });
+    </script>
+*@
+}
