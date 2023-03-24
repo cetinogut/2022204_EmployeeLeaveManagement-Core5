@@ -1,5 +1,6 @@
 ﻿using EmployeeLeaveManagement.BusinessEngine.Contracts;
 using EmployeeLeaveManagement.BusinessEngine.Implementation;
+using EmployeeLeaveManagement.Common.ConstantModels;
 using EmployeeLeaveManagement.Common.Mappings;
 using EmployeeLeaveManagement.Data.Contracts;
 using EmployeeLeaveManagement.Data.DataContext;
@@ -37,24 +38,28 @@ namespace _2022204_EmployeeLeaveManagement_Core5
                 options.UseSqlServer(
                     Configuration.GetConnectionString("IdentityConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
-            services.AddAutoMapper(typeof(Maps));
-            //services.AddScoped<IEmployeeLeaveAllocationRepository, EmployeeLeaveAllocationRepository>();
-            //services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
-            //services.AddScoped<IEmployeeLeaveRequestRepository, EmployeeLeaveRequestRepository>();
+         
             services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>(); // implemented unitofwork here and commented the repos above
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddAutoMapper(typeof(Maps));
+            //services.AddDefaultIdentity<IdentityUser> ().AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //   .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
+            services.AddIdentity<Employee, IdentityRole>()
+                .AddDefaultTokenProviders()
+               .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages(); // bunu eklemeye gerek var mıydı???
+            services.AddMvc(); // 24 ders 2.39da var
+            services.AddSession(); // 24 ders 2.39da yok
 
-            services.AddIdentity<Employee, IdentityRole>().AddDefaultTokenProviders()
-                .AddEntityFrameworkStores<EmployeeLeaveManagementContext>();
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -70,10 +75,13 @@ namespace _2022204_EmployeeLeaveManagement_Core5
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            SeedData.Seed(userManager, roleManager);
+
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

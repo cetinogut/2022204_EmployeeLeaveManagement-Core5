@@ -105,7 +105,7 @@ namespace _2022204_EmployeeLeaveManagement_Core5.Controllers
             var data = _employeeLeaveTypeBusinessEngine.RemoveEmployeeLeaveType(id);
             if (data.IsSuccess)
                 //return Json(new { success = data.IsSuccess, message = data.Message });
-                return RedirectToAction("Index");
+                return RedirectToAction("Index"); //?????
             else
                 return Json(new { success = data.IsSuccess, message = data.Message });
         }

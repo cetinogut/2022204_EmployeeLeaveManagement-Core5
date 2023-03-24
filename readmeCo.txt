@@ -15,3 +15,6 @@ Sweet Alert
 https://sweetalert.js.org/guides/
 
 https://sweetalert2.github.io/
+
+TEmpMail
+https://temp-mail.org/en/

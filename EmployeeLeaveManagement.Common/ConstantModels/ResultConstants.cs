@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeLeaveManagement.Common.ConstantModels
 {
-    public static class ResultMessages
+    public static class ResultConstants
     {
         public const string RecordFound = "İşlem başarılı, kayıt bulundu";
         public const string RecordNotFound = "İşlem başarısız, kayıt bulunamadı";
@@ -16,7 +16,16 @@ namespace EmployeeLeaveManagement.Common.ConstantModels
         public const string RecordDeletionFailure = "Data could not be deleted from DB !!!";
 
 
+        //---------------------------------------------------------------------------------------//
+        public const string Admin_Role = "Administrator";
+        public const string Employee_Role = "Employee";
 
+        public const string Admin_Email = "cogut1@gmail.com";
+        public const string Admin_Password = "Admin123!";
+        //---------------------------------------------------------------------------------------//
+        public const string LoginUserInfo = "Giriş Yapan Kullanıcı Bilgisi";
+        //---------------------------------------------------------------------------------------//
+        public const string MailTagHelperSuffix = "noktaatisi.com";
 
     }
 }

@@ -71,6 +71,7 @@
 			<div class="navbar-buttons navbar-header pull-right" role="navigation">
 				<ul class="nav ace-nav">
 
+					<partial name = "_LoginPartial" />
 
 					<li class="light-blue dropdown-modal">
 						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
@@ -158,6 +159,24 @@
 					<a href="index.html">
 						<i class="menu-icon fa fa-tachometer"></i>
 						<span class="menu-text"> Dashboard </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a asp-area="Identity" asp-page="/Account/Login">
+						<i class="menu-icon fa fa-sign-in"></i>
+						<span class="menu-text"> Login </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a asp-area="Identity" asp-page="/Account/Register">
+						<i class="menu-icon fa fa-user-plus"></i>
+						<span class="menu-text"> Register </span>
 					</a>
 
 					<b class="arrow"></b>
