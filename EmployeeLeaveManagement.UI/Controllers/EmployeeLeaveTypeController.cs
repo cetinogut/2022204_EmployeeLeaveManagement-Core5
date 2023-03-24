@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using EmployeeLeaveManagement.BusinessEngine.Contracts;
+using EmployeeLeaveManagement.Common.ConstantModels;
+using EmployeeLeaveManagement.Common.ResultModels;
 using EmployeeLeaveManagement.Common.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace _2022204_EmployeeLeaveManagement_Core5.Controllers
 {
+    [Authorize(Roles = ResultConstants.Admin_Role)]
     public class EmployeeLeaveTypeController : Controller
     {
         private readonly IEmployeeLeaveTypeBusinessEngine _employeeLeaveTypeBusinessEngine;
@@ -19,6 +23,7 @@ namespace _2022204_EmployeeLeaveManagement_Core5.Controllers
             _employeeLeaveTypeBusinessEngine = employeeLeaveTypeBusinessEngine;
             
         }
+        // [Authorize(Roles = ResultConstants.Admin_Role)]
         public IActionResult Index()
         {
             var data = _employeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes();
